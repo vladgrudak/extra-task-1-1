@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {v1} from 'uuid';
+import {Button} from './components/Button';
 
 
 type ObjectType = {
@@ -167,7 +168,7 @@ function App() {
     }
 
     const removeAllTodolists = () => {
-    //todo: САМОСТОЯТЕЛЬНО
+        setTodo([])
     }
 
     const removeAllTasksInOneTodo = (todolistId: number) => {
@@ -180,7 +181,7 @@ function App() {
     return (
         <div className="App">
             <div>
-
+                {todo.length ? <Button title={'Remove All Todolists'} onClick={removeAllTodolists} /> : ""}
             </div>
 
             {
@@ -207,7 +208,7 @@ function App() {
                         changeTaskStatus={changeStatus}
                         filter={tl.filter}
                         removeTodolist={removeTodolist}
-
+                        removeAllTasksInOneTodo={removeAllTasksInOneTodo}
                     />
                 })
             }
